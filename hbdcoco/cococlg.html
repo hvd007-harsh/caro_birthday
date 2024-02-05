@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Carolina</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(to right, #ffcccc, #cc99ff);
+            animation: backgroundAnimation 10s infinite;
+        }
+
+        .frame {
+            position: absolute;
+            width: 100%;
+            height: 15%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 2;
+            border: 10px solid transparent;
+            border-radius: 20px;
+            animation: borderAnimation 2s infinite alternate, flashAnimation 1s infinite;
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            margin: 0;
+            color: #3498db;
+            transition: color 1s ease-in-out;
+            animation: textAnimation 5s infinite alternate, bounceAnimation 1s infinite alternate;
+        }
+
+        img {
+            width: calc(10% - 20px);
+            height: auto;
+            margin: 10px;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            animation: imageAnimation 2s infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes imageAnimation {
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        @keyframes backgroundAnimation {
+
+            0%,
+            100% {
+                background: linear-gradient(to right, #ffcccc, #cc99ff);
+            }
+
+            25% {
+                background: linear-gradient(to right, #66ccff, #99ffcc);
+            }
+
+            50% {
+                background: linear-gradient(to right, #ffcc99, #cc99ff);
+            }
+
+            75% {
+                background: linear-gradient(to right, #99ffcc, #66ccff);
+            }
+        }
+
+        @keyframes textAnimation {
+            0% {
+                color: #3498db;
+            }
+
+            25% {
+                color: #e74c3c;
+            }
+
+            50% {
+                color: #2ecc71;
+            }
+
+            75% {
+                color: #f39c12;
+            }
+
+            100% {
+                color: #3498db;
+            }
+        }
+
+        @keyframes flashAnimation {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #f39c12;
+            }
+        }
+
+        @keyframes borderAnimation {
+
+            0%,
+            100% {
+                border-width: 20px;
+            }
+
+            50% {
+                border-width: 30px;
+            }
+        }
+
+        @keyframes bounceAnimation {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame">
+        <h1>Happy Birthday Carolina!</h1>
+    </div>
+
+    <script>
+        const imageUrls = [
+            'caro/0.jpg',
+            'caro/1.jpg',
+            'caro/2.jpg',
+            'caro/3.jpg',
+            'caro/4.jpg',
+            'caro/5.jpg',
+            'caro/6.jpg',
+            'caro/7.jpg',
+            'caro/8.jpg',
+            'caro/9.jpg',
+            'caro/11.jpg',
+            'caro/12.jpg',
+            'caro/13.jpg',
+            'caro/14.jpg',
+            'caro/15.jpg',
+            'caro/16.jpg',
+            'caro/17.jpg',
+            'caro/18.jpg',
+            'caro/19.jpg',
+            'caro/20.jpg',
+            'caro/21.jpg',
+            'caro/22.jpg',
+            'caro/23.jpg',
+            'caro/24.jpg',
+            'caro/25.jpg',
+            'caro/26.jpg',
+            'caro/27.jpg'
+        ];
+
+        function loadRandomImage() {
+            const randomIndex = Math.floor(Math.random() * imageUrls.length);
+            const imageUrl = imageUrls[randomIndex];
+            const imgElement = document.createElement('img');
+            imgElement.src = imageUrl;
+            document.body.appendChild(imgElement);
+
+            void imgElement.offsetWidth;
+
+            imgElement.style.opacity = 1;
+            imgElement.style.transform = 'scale(1) rotate(0)';
+
+            const allImages = document.querySelectorAll('img');
+            if (allImages.length > 100) {
+                document.body.removeChild(allImages[0]);
+            }
+        }
+
+        setInterval(loadRandomImage, 1000);
+    </script>
+</body>
+
+</html>
